@@ -21,16 +21,16 @@ const addDisplay = (e) => {
 const addEval = () => {
     try {
         arrEval.push(display.value)
-        let strEval=JSON.stringify(arrEval)
-        localStorage.setItem("eval",strEval)
+        let strEval = JSON.stringify(arrEval)
+        localStorage.setItem("eval", strEval)
         if (display.value == '888-666') {
             display.value = 'matraman'
             return
         }
         display.value = eval(display.value)
         arrResult.push(display.value)
-        let strResult=JSON.stringify(arrResult)
-        localStorage.setItem("res",strResult)
+        let strResult = JSON.stringify(arrResult)
+        localStorage.setItem("res", strResult)
         addHistory()
         i = 0
     } catch (err) {
@@ -48,8 +48,8 @@ btnClear.addEventListener("click", () => {
 // arrEval.push("2*2")
 // arrResult.push("4")
 const addHistory = () => {
-    let parseEval=JSON.parse(localStorage.getItem("eval"))
-    let parseRes=JSON.parse(localStorage.getItem("res"))
+    let parseEval = JSON.parse(localStorage.getItem("eval"))
+    let parseRes = JSON.parse(localStorage.getItem("res"))
     for (let i = 0; i <= parseEval.length; i++) {
         if (parseEval[i] && parseRes[i]) {
             if (i == 0) {
@@ -71,11 +71,11 @@ addHistory()
 deleteBtn.addEventListener("click", () => {
     arrEval = []
     arrResult = []
-    let strEval=JSON.stringify(arrEval)
-    let strRes=JSON.stringify(arrResult)
+    let strEval = JSON.stringify(arrEval)
+    let strRes = JSON.stringify(arrResult)
 
-    localStorage.setItem("eval",strEval)
-    localStorage.setItem("res",strRes)
+    localStorage.setItem("eval", strEval)
+    localStorage.setItem("res", strRes)
 
     addHistory()
 
@@ -111,11 +111,13 @@ window.addEventListener("keyup", (e) => {
         lowerKey == '/'
     ) {
         addDisplay(e.key)
-    }else if(lowerKey=='enter'){
+    } else if (lowerKey == 'enter') {
         addEval()
-    }else if(lowerKey=='delete'){
-        display.value=''
-    }else{
+    } else if (lowerKey == 'delete') {
+        display.value = ''
+    } else if (lowerKey == 'backspace') {
+        display.value = display.value.slice(0, -1);
+    } else {
         console.log('apacoba')
     }
     console.log(e.key)
