@@ -48,23 +48,28 @@ btnClear.addEventListener("click", () => {
 // arrEval.push("2*2")
 // arrResult.push("4")
 const addHistory = () => {
-    let parseEval = JSON.parse(localStorage.getItem("eval"))
-    let parseRes = JSON.parse(localStorage.getItem("res"))
-    for (let i = 0; i <= parseEval.length; i++) {
-        if (parseEval[i] && parseRes[i]) {
-            if (i == 0) {
-                history.innerHTML = ''
+    try {
+
+        let parseEval = JSON.parse(localStorage.getItem("eval"))
+        let parseRes = JSON.parse(localStorage.getItem("res"))
+        for (let i = 0; i <= parseEval.length; i++) {
+            if (parseEval[i] && parseRes[i]) {
+                if (i == 0) {
+                    history.innerHTML = ''
+                }
+                if (parseEval[i] === parseRes[i]) {
+                    parseEval[i] = parseEval[i] + '*1'
+                }
+                history.innerHTML += `
+            <li class="list-group-item">
+            <span class=" text-secondary smalltext fw-light">${parseEval[i]}</span><br>
+            <span>${parseRes[i]}</span>
+            <i class="float-end  bi-clock-history"></i></li>
+            `
             }
-            if (parseEval[i] === parseRes[i]) {
-                parseEval[i] = parseEval[i] + '*1'
-            }
-            history.innerHTML += `
-        <li class="list-group-item">
-                <span class=" text-secondary smalltext fw-light">${parseEval[i]}</span><br>
-                <span>${parseRes[i]}</span>
-        <i class="float-end  bi-clock-history"></i></li>
-        `
         }
+    } catch{
+        console.log("belum ada storage")
     }
 }
 addHistory()
