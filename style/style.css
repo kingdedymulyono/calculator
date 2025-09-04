@@ -1,5 +1,5 @@
 .main{
-    height: 100dvh;
+    height: 50dvh;
 }
 .calculator{
     min-width: 24dvw;
@@ -54,6 +54,12 @@
     border-radius: .5rem;
     padding: 1rem;
 } */
+ /* .history{
+
+ } */
+  .smalltext{
+    font-size: 10px;
+  }
 .numpad:hover{
     background-color: rgba(255, 255, 255, 0.6);
 }
