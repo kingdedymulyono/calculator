@@ -10,10 +10,24 @@ let arrEval = []
 let result
 let i = 0
 
-let protoEval = ['6*9+6+9']
-let protoRes = ['69']
-localStorage.setItem("eval", JSON.stringify(protoEval))
-localStorage.setItem("res", JSON.stringify(protoRes))
+
+if(!localStorage.getItem("eval") && !localStorage.getItem("res")){
+    let protoEval = ['6*9+6+9']
+    let protoRes = ['69']
+    localStorage.setItem("eval", JSON.stringify(protoEval))
+    localStorage.setItem("res", JSON.stringify(protoRes))
+}
+
+if(localStorage.getItem("eval")){
+    JSON.parse(localStorage.getItem("eval")).forEach((i)=>{
+        arrEval.push(i)
+    })
+}
+if(localStorage.getItem("res")){
+    JSON.parse(localStorage.getItem("res")).forEach((i)=>{
+        arrResult.push(i)
+    })
+}
 
 const addDisplay = (e) => {
     if (i == 0) {
