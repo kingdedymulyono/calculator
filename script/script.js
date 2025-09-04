@@ -10,6 +10,11 @@ let arrEval = []
 let result
 let i = 0
 
+let protoEval = ['6*9+6+9']
+let protoRes = ['69']
+localStorage.setItem("eval", JSON.stringify(protoEval))
+localStorage.setItem("res", JSON.stringify(protoRes))
+
 const addDisplay = (e) => {
     if (i == 0) {
         display.value = e
@@ -68,8 +73,8 @@ const addHistory = () => {
             `
             }
         }
-    } catch{
-        console.log("belum ada storage")
+    } catch (err) {
+        console.log(err)
     }
 }
 addHistory()
